@@ -2,6 +2,7 @@ import styles from "./Posts.module.scss";
 import { useSelector } from "react-redux";
 import { getAllPosts } from "../../../redux/postsRedux";
 import { Button, Card, Col, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const Posts = () => {
     const posts = useSelector(getAllPosts);
@@ -20,7 +21,7 @@ const Posts = () => {
                                 <br />
                                 <p className="mb-0">{post.shortDescription}</p>
                             </Card.Text>
-                            <Button variant="primary">Read more</Button>
+                            <Button variant="primary" as={NavLink} to={"/post/" + post.id}>Read more</Button>
                         </Card.Body>
                     </Card>
                 </Col>
