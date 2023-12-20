@@ -1,8 +1,8 @@
-import styles from './Footer.module.scss';
+import clsx from 'clsx';
 
 const Footer = props => {
     return(
-        <h1 className={styles.title}>Footer</h1>
+        <p className={clsx('text-center', 'text-muted')}>Copyright © BlogApp 2022</p>
     );
 };
 
