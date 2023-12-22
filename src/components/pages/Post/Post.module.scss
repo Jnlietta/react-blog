@@ -1,4 +1,12 @@
 .post {
     margin: 0 auto;
-    border: 1px solid green;
+    width: 50vw;
+}
+.postHeader {
+    display:flex;
+    justify-content: space-between;
+    
+    button{
+        margin-left: 5px;
+    }
 }

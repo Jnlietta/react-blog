@@ -12,17 +12,19 @@ const Post = () => {
     const post = useSelector(state => getPostById(state, idFromPath));
 
     return(
-        <div className={styles.post}>
-                <div>
-                    <h2 className={styles.title}>{post.title}</h2>
+        <article className={styles.post}>
+            <div className={styles.postHeader}>
+                <h2>{post.title}</h2>
+                <div className={styles.buttons}>
                     <Button variant="outline-info" as={NavLink} to={"/post/edit/" + post.id}>Edit</Button>
                     <Button variant="outline-danger">Delete</Button>
-                    <p className="mb-0"><span>Author: </span>{post.author}</p>
-                    <p className="mb-0"><span>Published: </span>{post.publishedDate}</p>
-                    <br />
-                    <p className="mb-0">{post.content}</p>
                 </div>
-        </div>
+            </div>
+            <p className="mb-0"><span>Author: </span>{post.author}</p>
+            <p className="mb-0"><span>Published: </span>{post.publishedDate}</p>
+            <br />
+            <p className="mb-0">{post.content}</p>
+        </article>
     );
 };
 
