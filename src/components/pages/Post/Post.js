@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 import styles from './Post.module.scss';
 import { getPostById } from '../../../redux/postsRedux';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { NavLink, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const Post = () => {
@@ -11,6 +12,11 @@ const Post = () => {
 
     const post = useSelector(state => getPostById(state, idFromPath));
 
+    const [showModal, setShowModal] = useState(false);
+
+    const handleCloseModal = () => setShowModal(false);
+    const handleShowModal = () => setShowModal(true);
+
     if(!post) return <Navigate to="/" />
     else return(
         <article className={styles.post}>
@@ -18,13 +24,33 @@ const Post = () => {
                 <h2>{post.title}</h2>
                 <div className={styles.buttons}>
                     <Button variant="outline-info" as={NavLink} to={"/post/edit/" + post.id}>Edit</Button>
-                    <Button variant="outline-danger">Delete</Button>
+                    <Button variant="outline-danger" onClick={handleShowModal}>Delete</Button>
                 </div>
             </div>
             <p className="mb-0"><span>Author: </span>{post.author}</p>
             <p className="mb-0"><span>Published: </span>{post.publishedDate}</p>
             <br />
             <p className="mb-0">{post.content}</p>
+            <Modal
+                show={showModal}
+                onHide={handleCloseModal}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    This operation will completely remove this post from the app. 
+                    Are you sure you want to do that?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger">Remove</Button>
+                </Modal.Footer>
+            </Modal>
         </article>
     );
 };
