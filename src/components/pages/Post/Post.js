@@ -1,12 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Post.module.scss';
-import { getPostById } from '../../../redux/postsRedux';
+import { getPostById, removePost } from '../../../redux/postsRedux';
 import { Button, Modal } from 'react-bootstrap';
 import { NavLink, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
 const Post = () => {
+    const dispatch = useDispatch();
+
     const idFromPath = window.location.pathname.split('/').filter(Boolean).pop();
     //console.log('idFromPath', idFromPath);
 
@@ -17,6 +19,11 @@ const Post = () => {
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
 
+    const removePostModal = e => {
+        e.preventDefault();
+        dispatch(removePost(idFromPath));
+    };
+    
     if(!post) return <Navigate to="/" />
     else return(
         <article className={styles.post}>
@@ -45,10 +52,8 @@ const Post = () => {
                     Are you sure you want to do that?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                        Cancel
-                    </Button>
-                    <Button variant="danger">Remove</Button>
+                    <Button variant="secondary" onClick={handleCloseModal}>Cancel</Button>
+                    <Button variant="danger" onClick={removePostModal}>Remove</Button>
                 </Modal.Footer>
             </Modal>
         </article>
