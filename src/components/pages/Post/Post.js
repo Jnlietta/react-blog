@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import styles from './Post.module.scss';
-import { getAllPosts } from '../../../redux/postsRedux';
+import { getPostById } from '../../../redux/postsRedux';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 
 const Post = () => {
-const posts = useSelector(getAllPosts);
+const posts = useSelector(state => getPostById(state, postId));
 
     return(
         <div className={styles.post}>
