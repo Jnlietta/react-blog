@@ -10,7 +10,7 @@ const Home = props => {
     return(
         <div>
             <div className={styles.homeHeader}>
-                <h2 className={styles.title}>All posts</h2>
+                <h2>All posts</h2>
                 <Button variant="outline-info" as={NavLink} to="/post/add">Add post</Button>
             </div>
             <Posts />

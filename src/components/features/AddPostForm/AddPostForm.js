@@ -1,6 +1,8 @@
 const AddPostForm = () => {
     return(
-        <h1>PostForm</h1>
+        <div>
+            <h2>PostForm</h2>
+        </div>
     );
 };
 

@@ -1,8 +1,11 @@
-import styles from './AddPost.module.scss';
+import AddPostForm from '../../features/AddPostForm/AddPostForm';
 
 const AddPost = props => {
     return(
-        <h1 className={styles.title}>AddPost</h1>
+        <div>
+            <h2>AddPost</h2>
+            <AddPostForm />
+        </div>
     );
 };
 
