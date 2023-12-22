@@ -4,7 +4,7 @@ import Home from './components/pages/Home/Home';
 import About from './components/pages/About/About';
 import EditPost from './components/pages/EditPost/EditPost';
 import NotFound from './components/pages/NotFound/NotFound';
-import Post from './components/pages/Post/Post';
+import Post from './components/features/Post/Post';
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 import { Container } from 'react-bootstrap';
