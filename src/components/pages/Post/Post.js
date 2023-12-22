@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import styles from './Post.module.scss';
 import { getPostById } from '../../../redux/postsRedux';
 import { Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 
 
 const Post = () => {
@@ -11,7 +11,8 @@ const Post = () => {
 
     const post = useSelector(state => getPostById(state, idFromPath));
 
-    return(
+    if(!post) return <Navigate to="/" />
+    else return(
         <article className={styles.post}>
             <div className={styles.postHeader}>
                 <h2>{post.title}</h2>
