@@ -4,10 +4,13 @@ export const getPostById = ({ posts }, postId) => posts.find(post => post.id ===
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
+const REMOVE_POST = createActionName('REMOVE_POST');
 
 // action creators
 const postsReducer = (statePart = [], action) => {
   switch (action.type) {
+    case REMOVE_POST:
+      return statePart.filter(post => (post.id !== action.payload));
     default:
       return statePart;
   };
