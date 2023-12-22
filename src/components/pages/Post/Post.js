@@ -7,17 +7,15 @@ import { useState } from 'react';
 
 
 const Post = () => {
-    const dispatch = useDispatch();
-
     const idFromPath = window.location.pathname.split('/').filter(Boolean).pop();
-    //console.log('idFromPath', idFromPath);
-
     const post = useSelector(state => getPostById(state, idFromPath));
 
     const [showModal, setShowModal] = useState(false);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
+
+    const dispatch = useDispatch();
 
     const removePostModal = e => {
         e.preventDefault();
@@ -38,6 +36,7 @@ const Post = () => {
             <p className="mb-0"><span>Published: </span>{post.publishedDate}</p>
             <br />
             <p className="mb-0">{post.content}</p>
+
             <Modal
                 show={showModal}
                 onHide={handleCloseModal}
