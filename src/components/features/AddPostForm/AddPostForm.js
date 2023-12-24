@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addPost } from "../../../redux/postsRedux";
 
 const AddPostForm = () => {
     const [title, setTitle] = useState ('');
@@ -8,8 +10,20 @@ const AddPostForm = () => {
     const [shortDescription, setShortDescription] = useState ('');
     const [content, setContent] = useState ('');
 
+    const dispatch = useDispatch();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        dispatch(addPost({ title, author, publishedDate, shortDescription, content }));        
+        setTitle('');
+        setAuthor('');
+        setPublishedDate('');
+        setShortDescription('');
+        setContent('');
+    }
+
     return(
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
                 <Form.Control 
