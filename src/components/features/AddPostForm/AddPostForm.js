@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addPost } from "../../../redux/postsRedux";
+import { useNavigate } from "react-router-dom";
 
 const AddPostForm = () => {
     const [title, setTitle] = useState ('');
@@ -11,6 +12,7 @@ const AddPostForm = () => {
     const [content, setContent] = useState ('');
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -20,6 +22,7 @@ const AddPostForm = () => {
         setPublishedDate('');
         setShortDescription('');
         setContent('');
+        navigate('/');
     }
 
     return(
