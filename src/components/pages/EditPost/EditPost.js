@@ -4,7 +4,7 @@ import styles from './EditPost.module.scss';
 const EditPost = props => {
     return(
         <div className={styles.container}>
-            <h2>Add Post</h2>
+            <h2>Edit Post</h2>
             <EditPostForm />
         </div>
     );
