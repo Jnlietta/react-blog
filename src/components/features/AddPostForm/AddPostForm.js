@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 const AddPostForm = () => {
+    const [title, setTitle] = useState ('');
+    const [author, setAuthor] = useState ('');
+    const [publishedDate, setPublishedDate] = useState ('');
+    const [shortDescription, setShortDescription] = useState ('');
+    const [content, setContent] = useState ('');
+
     return(
         <Form>
             <Form.Group className="mb-3">
