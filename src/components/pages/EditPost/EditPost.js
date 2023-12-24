@@ -1,8 +1,12 @@
+import EditPostForm from '../../features/EditPostForm/EditPostForm';
 import styles from './EditPost.module.scss';
 
 const EditPost = props => {
     return(
-        <h1 className={styles.title}>EditPost</h1>
+        <div className={styles.container}>
+            <h2>Add Post</h2>
+            <EditPostForm />
+        </div>
     );
 };
 
