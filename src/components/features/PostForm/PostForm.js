@@ -15,22 +15,23 @@ const PostForm = ({ action, actionText, ...props }) => {
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
 
-    const handleSubmit = e => {
-        e.preventDefault();
+    const handleSubmit = () => {
         action({ title, author, publishedDate, shortDescription, content });
     };
     
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     return(
-        <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
+        <Form onSubmit={validate(handleSubmit)}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Title</Form.Label>
-                <Form.Control 
-                    value={title} 
+                <Form.Control
+                    {...register("title", { required: true })}
+                    value={title}
                     onChange={e => setTitle(e.target.value)}
-                    placeholder="Enter title" 
+                    type="text" placeholder="Enter title"
                     />
+                {errors.title && <span>This field is required</span>}
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Author</Form.Label>
