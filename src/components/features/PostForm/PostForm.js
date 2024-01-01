@@ -14,9 +14,15 @@ const PostForm = ({ action, actionText, ...props }) => {
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
+    const [dateError, setDateError] = useState(false);
+    const [contentError, setContentError] = useState(false);
 
     const handleSubmit = () => {
-        action({ title, author, publishedDate, shortDescription, content });
+        setContentError(!content)
+        setDateError(!publishedDate)
+        if(content && publishedDate) {
+            action({ title, author, publishedDate, shortDescription, content });
+          }
     };
     
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
@@ -50,6 +56,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                     selected={publishedDate} 
                     onChange={publishedDate => setPublishedDate(publishedDate)} 
                     />
+                {dateError && <small className="d-block form-text text-danger mt-2">This field is required</small>}
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Short description</Form.Label>
@@ -70,6 +77,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                     value={content} 
                     onChange={setContent} 
                     />
+                {contentError && <small className="d-block form-text text-danger mt-2">Content can't be empty</small>}
             </Form.Group>
 
             <Button variant="primary" type="submit">{actionText}</Button>
