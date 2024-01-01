@@ -23,7 +23,10 @@ const Post = () => {
         dispatch(removePost(idFromPath));
     };
     
-    const stringDate = dateToStr(post.publishedDate);
+
+    const dateString = () => {
+        if(post.publishedDate) return dateToStr(post.publishedDate);
+    };
 
     if(!post) return <Navigate to="/" />
     else return(
@@ -36,7 +39,7 @@ const Post = () => {
                 </div>
             </div>
             <p className="mb-0"><span>Author: </span>{post.author}</p>
-            <p className="mb-0"><span>Published: </span>{stringDate}</p>
+            <p className="mb-0"><span>Published: </span>{dateString}</p>
             <br />
             <p className="mb-0" dangerouslySetInnerHTML={{ __html: post.content }} />
 
