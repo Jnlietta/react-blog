@@ -14,6 +14,7 @@ const PostForm = ({ action, actionText, ...props }) => {
     const [title, setTitle] = useState(props.title || '');
     const [author, setAuthor] = useState(props.author || '');
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
+    const [category, setCategory] = useState(props.category || '');
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
     const [dateError, setDateError] = useState(false);
@@ -67,7 +68,11 @@ const PostForm = ({ action, actionText, ...props }) => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Category</Form.Label>
-                <Form.Select aria-label="Default select example">
+                <Form.Select 
+                    aria-label="Default select example"
+                    value={category}
+                    onChange={e => setCategory(e.target.value)} 
+                    >
                     <option>Select category...</option>
                     {categories.map(category=>(
                     <option value={category.id}>{category.name}</option>
