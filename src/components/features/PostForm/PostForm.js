@@ -27,7 +27,7 @@ const PostForm = ({ action, actionText, ...props }) => {
         setContentError(!content)
         setDateError(!publishedDate)
         if(content && publishedDate) {
-            action({ title, author, publishedDate, shortDescription, content });
+            action({ title, author, publishedDate, category, shortDescription, content });
           }
     };
     
@@ -75,7 +75,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                     >
                     <option>Select category...</option>
                     {categories.map(category=>(
-                    <option value={category.id}>{category.name}</option>
+                    <option key={category.id} value={category.name}>{category.name}</option>
                     ))}
                 </Form.Select>
             </Form.Group>
