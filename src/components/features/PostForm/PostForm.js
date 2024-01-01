@@ -26,20 +26,22 @@ const PostForm = ({ action, actionText, ...props }) => {
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
-                    {...register("title", { required: true })}
+                    {...register("title", { required: true, minLength: 3 })}
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                     type="text" placeholder="Enter title"
                     />
-                {errors.title && <small className="d-block form-text text-danger mt-2">This field is required</small>}
+                {errors.title && <small className="d-block form-text text-danger mt-2">Title is too short (min is 3)</small>}
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Author</Form.Label>
                 <Form.Control 
+                    {...register("author", { required: true, minLength: 3 })}
                     value={author} 
                     onChange={e => setAuthor(e.target.value)}
-                    placeholder="Enter author" 
+                    type="text" placeholder="Enter title"
                     />
+                {errors.author && <small className="d-block form-text text-danger mt-2">Author is too short (min is 3)</small>}
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Published</Form.Label>
@@ -52,12 +54,14 @@ const PostForm = ({ action, actionText, ...props }) => {
             <Form.Group className="mb-3">
                 <Form.Label>Short description</Form.Label>
                 <Form.Control 
+                    {...register("shortDescription", { required: true, minLength: 20 })}
                     value={shortDescription} 
                     onChange={e => setShortDescription(e.target.value)}
                     placeholder="Leave a comment here" 
                     as="textarea" 
                     rows={2}
                     />
+                {errors.shortDescription && <small className="d-block form-text text-danger mt-2">Short description is too short (min is 20)</small>}
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Main content</Form.Label>
