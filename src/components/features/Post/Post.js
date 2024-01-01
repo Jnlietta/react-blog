@@ -24,8 +24,8 @@ const Post = () => {
     };
     
 
-    const dateString = () => {
-        if(post.publishedDate) return dateToStr(post.publishedDate);
+    const dateString = date => {
+        if(post.publishedDate) return dateToStr(date);
     };
 
     if(!post) return <Navigate to="/" />
@@ -39,7 +39,7 @@ const Post = () => {
                 </div>
             </div>
             <p className="mb-0"><span>Author: </span>{post.author}</p>
-            <p className="mb-0"><span>Published: </span>{dateString}</p>
+            <p className="mb-0"><span>Published: </span>{dateString(post.publishedDate)}</p>
             <br />
             <p className="mb-0" dangerouslySetInnerHTML={{ __html: post.content }} />
 
