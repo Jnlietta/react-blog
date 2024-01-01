@@ -40,7 +40,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                 <Form.Label>Published</Form.Label>
                 <DatePicker 
                     selected={publishedDate} 
-                    onChange={e => setPublishedDate(e.target.value)} 
+                    onChange={publishedDate => setPublishedDate(publishedDate)} 
                     />
             </Form.Group>
             <Form.Group className="mb-3">

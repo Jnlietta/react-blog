@@ -3,9 +3,15 @@ import { useSelector } from "react-redux";
 import { getAllPosts } from "../../../redux/postsRedux";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import dateToStr from "../../../utils/dateToStr";
 
 const Posts = () => {
     const posts = useSelector(getAllPosts);
+
+    const dateString = date => {
+        return  dateToStr(date);
+
+    };
 
     return (
         <div>
@@ -17,7 +23,7 @@ const Posts = () => {
                             <Card.Title className={styles.title}>{post.title}</Card.Title>
                             <Card.Text>
                                 <p className="mb-0"><span>Author: </span>{post.author}</p>
-                                <p className="mb-0"><span>Published: </span>{post.publishedDate}</p>
+                                <p className="mb-0"><span>Published: </span>{dateString(post.publishedDate)}</p>
                                 <br />
                                 <p className="mb-0">{post.shortDescription}</p>
                             </Card.Text>

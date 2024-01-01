@@ -4,6 +4,7 @@ import { getPostById, removePost } from '../../../redux/postsRedux';
 import { Button, Modal } from 'react-bootstrap';
 import { NavLink, Navigate } from 'react-router-dom';
 import { useState } from 'react';
+import dateToStr from '../../../utils/dateToStr';
 
 
 const Post = () => {
@@ -22,6 +23,8 @@ const Post = () => {
         dispatch(removePost(idFromPath));
     };
     
+    const stringDate = dateToStr(post.publishedDate);
+
     if(!post) return <Navigate to="/" />
     else return(
         <article className={styles.post}>
@@ -33,7 +36,7 @@ const Post = () => {
                 </div>
             </div>
             <p className="mb-0"><span>Author: </span>{post.author}</p>
-            <p className="mb-0"><span>Published: </span>{post.publishedDate}</p>
+            <p className="mb-0"><span>Published: </span>{stringDate}</p>
             <br />
             <p className="mb-0" dangerouslySetInnerHTML={{ __html: post.content }} />
 
