@@ -35,7 +35,7 @@ const Post = () => {
             <p className="mb-0"><span>Author: </span>{post.author}</p>
             <p className="mb-0"><span>Published: </span>{post.publishedDate}</p>
             <br />
-            <p className="mb-0">{post.content}</p>
+            <p className="mb-0" dangerouslySetInnerHTML={{ __html: post.content }} />
 
             <Modal
                 show={showModal}
