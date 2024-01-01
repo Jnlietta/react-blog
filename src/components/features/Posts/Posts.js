@@ -24,6 +24,7 @@ const Posts = () => {
                             <Card.Text>
                                 <p className="mb-0"><span>Author: </span>{post.author}</p>
                                 <p className="mb-0"><span>Published: </span>{dateString(post.publishedDate)}</p>
+                                <p className="mb-0"><span>Category: </span>{post.category}</p>
                                 <br />
                                 <p className="mb-0">{post.shortDescription}</p>
                             </Card.Text>
