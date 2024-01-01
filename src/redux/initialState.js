@@ -24,7 +24,8 @@ const initialState = {
             publishedDate: new Date('08-30-2019'),
             author: 'John Doe'
         }
-    ]
+    ],
+    categories: [ 'Sport' , 'News' , 'Movies' ]
 };
 
 export default initialState;
