@@ -17,7 +17,10 @@ const PostForm = ({ action, actionText, ...props }) => {
     const [dateError, setDateError] = useState(false);
     const [contentError, setContentError] = useState(false);
 
+    const emptyQuill = '<p><br></p>';
+
     const handleSubmit = () => {
+        if(content === emptyQuill) return setContent('');
         setContentError(!content)
         setDateError(!publishedDate)
         if(content && publishedDate) {
