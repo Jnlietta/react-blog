@@ -6,6 +6,8 @@ import'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { getAllCategories } from "../../../redux/categoriesRedux";
+import { useSelector } from "react-redux";
 
 
 const PostForm = ({ action, actionText, ...props }) => {
@@ -29,6 +31,8 @@ const PostForm = ({ action, actionText, ...props }) => {
     };
     
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
+
+    const categories = useSelector(getAllCategories);
 
     return(
         <Form onSubmit={validate(handleSubmit)}>
@@ -65,9 +69,9 @@ const PostForm = ({ action, actionText, ...props }) => {
                 <Form.Label>Category</Form.Label>
                 <Form.Select aria-label="Default select example">
                     <option>Select category...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    {categories.map(category=>(
+                    <option value={category.id}>{category.name}</option>
+                    ))}
                 </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">
