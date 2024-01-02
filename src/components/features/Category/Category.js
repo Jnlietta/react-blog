@@ -6,6 +6,8 @@ const Category = () => {
     const categoryFromPath = window.location.pathname.split('/').filter(Boolean).pop();
     const post = useSelector(state => getPostByCategory(state, categoryFromPath));
 
+    console.log(post);
+
     if(!post) return(
         <div>
             <h2 className={styles.header}>Category: <span>{categoryFromPath}</span></h2>
@@ -14,7 +16,7 @@ const Category = () => {
             )
     else return(
             <div>
-                <h2 className={styles.header}>Category: {post.category}</h2>
+                <h2 className={styles.header}>Category: <span>{categoryFromPath}</span></h2>
             </div>
     );
 };
