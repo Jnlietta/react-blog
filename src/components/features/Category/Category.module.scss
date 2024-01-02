@@ -1,5 +1,8 @@
 .header {
-    display: flex;
-    justify-content: space-between;
+    display: block;
     margin-bottom: 24px;
+    span{
+        font-weight:500;
+        text-transform: capitalize;
+    }
 }
