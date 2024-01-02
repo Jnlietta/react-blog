@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from './Category.module.scss';
+import { getPostByCategory } from '../../../redux/postsRedux';
 
 const Category = () => {
     const categoryFromPath = window.location.pathname.split('/').filter(Boolean).pop();
