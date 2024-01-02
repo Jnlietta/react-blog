@@ -22,7 +22,7 @@ const App = () => {
             <Route path="/post/edit/:id" element={<EditPost />} />
             <Route path="/about" element={<About />} />
             <Route path="/categories" element={<Categories />} />
-            <Route path="/categories/:id" element={<Category />} />
+            <Route path="/categories/:name" element={<Category />} />
             <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
