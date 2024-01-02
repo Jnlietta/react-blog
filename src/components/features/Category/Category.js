@@ -10,7 +10,7 @@ const Category = () => {
     else return(
         <div>
             <div className={styles.header}>
-                <h2>Category: </h2>
+                <h2>Category: {post.category}</h2>
             </div>
         </div>
     );
