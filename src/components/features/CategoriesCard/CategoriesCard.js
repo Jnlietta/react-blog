@@ -2,6 +2,7 @@ import { Card, ListGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getAllCategories } from '../../../redux/categoriesRedux';
 import { NavLink } from 'react-router-dom';
+import categoryPathFormat from '../../../utils/categoryPathFormat';
 
 const CategoriesCard = props => {
     const categories = useSelector(getAllCategories);
@@ -11,7 +12,7 @@ const CategoriesCard = props => {
             <ListGroup variant="flush">
                 {categories.map(category=>(
                     <ListGroup.Item>
-                        <NavLink as={NavLink} to="/about">{category.name}</NavLink>
+                        <NavLink as={NavLink} to={"/category/" + categoryPathFormat(category.name)}>{category.name}</NavLink>
                     </ListGroup.Item>
                 ))}
             </ListGroup>
