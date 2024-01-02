@@ -11,7 +11,7 @@ const CategoriesCard = props => {
         <Card>
             <ListGroup variant="flush">
                 {categories.map(category=>(
-                    <ListGroup.Item>
+                    <ListGroup.Item key={category.id}>
                         <NavLink as={NavLink} to={"/category/" + categoryPathFormat(category.name)}>{category.name}</NavLink>
                     </ListGroup.Item>
                 ))}
