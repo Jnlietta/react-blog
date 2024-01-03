@@ -1,13 +1,9 @@
 import styles from "./Posts.module.scss";
-import { useSelector } from "react-redux";
-import { getAllPosts } from "../../../redux/postsRedux";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import dateToStr from "../../../utils/dateToStr";
 
-const Posts = () => {
-    const posts = useSelector(getAllPosts);
-
+const Posts = ({posts}) => {
     const dateString = date => {
         return  dateToStr(date);
 
@@ -22,11 +18,11 @@ const Posts = () => {
                         <Card.Body>
                             <Card.Title className={styles.title}>{post.title}</Card.Title>
                             <Card.Text>
-                                <p className="mb-0"><span>Author: </span>{post.author}</p>
-                                <p className="mb-0"><span>Published: </span>{dateString(post.publishedDate)}</p>
-                                <p className="mb-0"><span>Category: </span>{post.category}</p>
+                                <span className="mb-0"><strong>Author: </strong>{post.author}</span>
+                                <span className="mb-0"><strong>Published: </strong>{dateString(post.publishedDate)}</span>
+                                <span className="mb-0"><strong>Category: </strong>{post.category}</span>
                                 <br />
-                                <p className="mb-0">{post.shortDescription}</p>
+                                <span className="mb-0">{post.shortDescription}</span>
                             </Card.Text>
                             <Button variant="primary" as={NavLink} to={"/post/" + post.id}>Read more</Button>
                         </Card.Body>

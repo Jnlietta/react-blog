@@ -1,9 +1,8 @@
+
 span {
-    font-weight: bold;
-}
-p {
+    display: block;
     text-wrap: nowrap;
-    &:nth-of-type(3) {
+    &:nth-of-type(4) {
         text-wrap: wrap;
     }
 }
