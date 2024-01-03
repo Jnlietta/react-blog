@@ -24,9 +24,6 @@ const Post = () => {
         dispatch(removePost(idFromPath));
     };
     
-
-    console.log(post.author)
-
     const dateString = date => {
         if(post.publishedDate) return dateToStr(date);
     };
