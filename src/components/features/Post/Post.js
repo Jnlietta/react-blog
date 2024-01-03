@@ -2,13 +2,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Post.module.scss';
 import { getPostById, removePost } from '../../../redux/postsRedux';
 import { Button, Modal } from 'react-bootstrap';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import dateToStr from '../../../utils/dateToStr';
 
 
 const Post = () => {
-    const idFromPath = window.location.pathname.split('/').filter(Boolean).pop();
+    const {id} = useParams();
+    const idFromPath = id;
     const post = useSelector(state => getPostById(state, idFromPath));
 
     const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,8 @@ const Post = () => {
     };
     
 
+    console.log(post.author)
+
     const dateString = date => {
         if(post.publishedDate) return dateToStr(date);
     };
@@ -38,11 +41,13 @@ const Post = () => {
                     <Button variant="outline-danger" onClick={handleShowModal}>Delete</Button>
                 </div>
             </div>
-            <p className="mb-0"><span>Author: </span>{post.author}</p>
-            <p className="mb-0"><span>Published: </span>{dateString(post.publishedDate)}</p>
-            <p className="mb-0"><span>Category: </span>{post.category}</p>
-            <br />
-            <p className="mb-0" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className={styles.text}>
+                <p className="mb-0"><span>Author: </span>{post.author}</p>
+                <p className="mb-0"><span>Published: </span>{dateString(post.publishedDate)}</p>
+                <p className="mb-0"><span>Category: </span>{post.category}</p>
+                <br />
+                <p className="mb-0" dangerouslySetInnerHTML={{ __html: post.content }} />
+            </div>
 
             <Modal
                 show={showModal}

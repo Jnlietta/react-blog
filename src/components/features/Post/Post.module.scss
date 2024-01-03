@@ -5,8 +5,16 @@
 .postHeader {
     display:flex;
     justify-content: space-between;
+
     
     button{
         margin-left: 5px;
+    }
+}
+
+.text{
+    span{
+        font-weight: bold;
+        display: inline;
     }
 }
